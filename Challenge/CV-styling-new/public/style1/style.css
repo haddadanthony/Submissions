@@ -1,0 +1,130 @@
+/*--------HEADER----------*/
+
+h4 {
+  color: rgb(242, 5, 5);
+}
+
+h3::before {
+  content: "• ";
+  font-size: 1.5em;
+  color: rgb(242, 5, 5);
+}
+
+h3 {
+  border-bottom: 2px solid rgb(190, 190, 190);
+  padding-bottom: 10px;
+}
+
+header {
+  background: rgb(140, 140, 140);
+}
+
+header > div {
+  display: flex;
+  justify-content: left;
+  padding-left: 4%;
+}
+
+hgroup {
+  color: rgb(242, 5, 5);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.experience-institution::before {
+  content: "@ ";
+  font-weight: 200;
+  font-style: italic;
+  color: rgb(242, 5, 5);
+}
+
+.experience-institution {
+  font-weight: 200;
+  color: rgb(242, 5, 5);
+}
+
+.experience-date-separator {
+  color: rgb(242, 5, 5);
+}
+
+.day,
+.month,
+.year,
+.experience-location {
+  color: rgb(156, 154, 154);
+}
+
+/*--------PROGRESS BARS----------*/
+
+.skills-primary .skill {
+  padding: 2%;
+  padding-left: 5px !important;
+  margin-bottom: 5px;
+  background: rgb(140, 140, 140);
+}
+
+.skills-primary .skill:first-child span {
+  background: rgb(242, 5, 5);
+  padding: 1.5%;
+  padding-right: 50% !important;
+  color: #fff;
+}
+
+.skills-primary .skill:nth-child(2) span {
+  background: rgb(242, 5, 5);
+  padding: 1.5%;
+  padding-right: 30% !important;
+  color: #fff;
+}
+
+.skills-primary .skill:nth-child(3) span {
+  background: rgb(242, 5, 5);
+  padding: 1.5%;
+  padding-right: 15% !important;
+  color: #fff;
+}
+
+.skills-secondary {
+  margin-top: 40px;
+}
+
+.skills-secondary .skill {
+  padding: 2%;
+  padding-left: 5px !important;
+  margin-bottom: 5px;
+  background: rgb(190, 190, 190);
+}
+
+.skills-secondary .skill:first-child span {
+  background: rgb(242, 75, 75);
+  padding: 1.5%;
+  padding-right: 50% !important;
+  color: #fff;
+}
+
+.skills-secondary .skill:nth-child(2) span {
+  background: rgb(242, 75, 75);
+  padding: 1.5%;
+  padding-right: 30% !important;
+  color: #fff;
+}
+
+.skills-secondary .skill:nth-child(3) span {
+  background: rgb(242, 75, 75);
+  padding: 1.5%;
+  padding-right: 15% !important;
+  color: #fff;
+}
+
+#contact {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid;
+}
