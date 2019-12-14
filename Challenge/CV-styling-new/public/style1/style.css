@@ -1,3 +1,8 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
 /*--------HEADER----------*/
 
 h4 {
@@ -17,12 +22,15 @@ h3 {
 
 header {
   background: rgb(140, 140, 140);
+  height: 190px;
 }
 
 header > div {
   display: flex;
   justify-content: left;
-  padding-left: 4%;
+  padding-left: 10%;
+  position: relative;
+  top: 20px;
 }
 
 hgroup {
@@ -122,9 +130,45 @@ hgroup {
   color: #fff;
 }
 
+/*--------CONTACT SECTION----------*/
+
 #contact {
+  background: linear-gradient(
+    to right,
+    rgb(242, 5, 5) 0%,
+    rgb(242, 5, 5) 25%,
+    black 25%,
+    black 100%
+  );
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 0;
   border: 1px solid;
+  font-size: 0.9em;
+  width: 550px;
+}
+
+#contact > h3 {
+  display: none;
+}
+
+dl {
+  display: flex;
+}
+
+dt {
+  width: 18%;
+  color: #fff;
+  margin-left: 5px;
+}
+
+dd {
+  margin: 0;
+  margin-left: 50px;
+  color: rgb(242, 5, 5);
+}
+
+dd > a {
+  text-decoration: none;
+  color: rgb(242, 5, 5);
 }
