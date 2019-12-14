@@ -133,19 +133,22 @@ hgroup {
 /*--------CONTACT SECTION----------*/
 
 #contact {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  font-size: 0.9em;
+  width: 550px;
+}
+
+.contacts {
   background: linear-gradient(
     to right,
     rgb(242, 5, 5) 0%,
     rgb(242, 5, 5) 25%,
-    black 25%,
-    black 100%
+    #fff 25%,
+    #fff 100%
   );
-  position: absolute;
-  top: 10px;
-  right: 0;
-  border: 1px solid;
-  font-size: 0.9em;
-  width: 550px;
+  padding: 1px;
 }
 
 #contact > h3 {
@@ -171,4 +174,61 @@ dd {
 dd > a {
   text-decoration: none;
   color: rgb(242, 5, 5);
+}
+
+/*--------------------------------*/
+/*--------MEDIA QUERIES----------*/
+/*--------------------------------*/
+
+/*-----MOBILES-------*/
+
+@media (max-width: 470px) {
+  #contact {
+    position: relative;
+    width: 100%;
+    font-size: 0.859em;
+  }
+
+  #contact > h3 {
+    font-size: 1.5em !important;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #contact > h3 {
+    display: block;
+  }
+
+  .contacts {
+    background: linear-gradient(
+      to right,
+      rgb(242, 5, 5) 0%,
+      rgb(242, 5, 5) 43%,
+      #fff 43%,
+      #fff 100%
+    );
+  }
+
+  dt {
+    margin-left: 1px;
+    width: 30%;
+  }
+
+  .contact-skype dd {
+    color: black;
+  }
+
+  header > div {
+    display: flex;
+    justify-content: left;
+    padding-left: 10%;
+    flex-direction: column;
+  }
+
+  header {
+    height: 300px;
+  }
 }
