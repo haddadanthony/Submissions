@@ -145,8 +145,8 @@ hgroup {
     to right,
     rgb(242, 5, 5) 0%,
     rgb(242, 5, 5) 25%,
-    #fff 25%,
-    #fff 100%
+    black 25%,
+    black 100%
   );
   padding: 1px;
 }
