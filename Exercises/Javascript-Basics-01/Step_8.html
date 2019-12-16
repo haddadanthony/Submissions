@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Step 8</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <form>
-            <label for="age">your age : </label><input type="text" id="age" name="age"/><br/>
-            <button id="validate" name="validate">validate</button>
-        </form>
-    </body>
+  <head>
+    <title>Step 8</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <form>
+      <label for="age">your age : </label
+      ><input type="text" id="age" name="age" /><br />
+      <button id="validate" name="validate">validate</button>
+    </form>
+    <script>
+      const validate = () => {
+        const age = document.getElementById("age").value;
+        age > 18 ? alert("You are over 18") : alert("You are under 18");
+      };
+
+      document.getElementById("validate").addEventListener("click", validate);
+    </script>
+  </body>
 </html>
