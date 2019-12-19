@@ -10,7 +10,11 @@
     <script>
       const name = prompt("Enter your name");
       const greet = name => {
-        alert(`Hello ${name}`);
+        if (["Alice", "Bob"].includes(name)) {
+          alert(`Hello ${name}!`);
+          return;
+        }
+        alert("Hello Stranger!");
       };
       greet(name);
     </script>
