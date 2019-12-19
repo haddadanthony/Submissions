@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const number = prompt("Enter a number");
+      const choose = prompt("Choose between sum or product");
+
+      const compute = (num, choice) => {
+        let total = 0;
+
+        if (choice == "sum") {
+          for (i = 1; i <= num; i++) {
+            total += i;
+          }
+          alert(total);
+          return;
+        } else if (choice == "product") {
+          total = 1;
+          for (i = 1; i <= num; i++) {
+            total *= i;
+          }
+          alert(total);
+          return;
+        }
+      };
+      compute(number, choose);
+    </script>
+  </body>
+</html>
