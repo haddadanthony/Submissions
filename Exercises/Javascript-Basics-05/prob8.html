@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const randomNum = Math.floor(Math.random() * 100) + 1;
+      console.log(randomNum);
+
+      const check = () => {
+        let tries = 0;
+        let guess = prompt("Enter a number from 1 to 100");
+        while (guess != randomNum) {
+          tries++;
+          if (tries > 7) {
+            alert(`Game over with ${tries} trials!`);
+            return;
+          }
+          if (guess < randomNum) {
+            alert(`Too small / trial: ${tries} of 8`);
+            guess = prompt("Enter a number from 1 to 100");
+          } else {
+            alert(`Too large / trial: ${tries} of 8`);
+            guess = prompt("Enter a number from 1 to 100");
+          }
+        }
+
+        alert(`Correct! with ${++tries} trials.`);
+      };
+
+      check();
+    </script>
+  </body>
+</html>
