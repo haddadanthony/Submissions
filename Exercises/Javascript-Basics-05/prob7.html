@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function printPrime() {
+        let notPrimes = [];
+        let primes = [];
+
+        // Check for the non-prime numbers
+        for (i = 2; i < 30; i++) {
+          for (j = 2; j < i; j++) {
+            if (i % j == 0) {
+              notPrimes.push(i);
+              break;
+            }
+          }
+        }
+
+        // Check !primes array and add missing numbers
+        // from 2 -> 30 to primes array
+        for (i = 2; i < 30; i++) {
+          if (!notPrimes.includes(i)) {
+            primes.push(i);
+          }
+        }
+        alert(primes);
+      }
+
+      printPrime();
+    </script>
+  </body>
+</html>
