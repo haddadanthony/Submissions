@@ -1,0 +1,64 @@
+body {
+  background-image: no-repeat;
+  background-size: cover;
+}
+.nav-textd {
+  font-size: 30px;
+  margin: -10px;
+  color: white;
+}
+.navimg {
+  width: 70px;
+  height: 70px;
+  margin: -10px;
+}
+#sdag {
+  margin-right: 120px;
+  color: red;
+}
+.bs-example {
+  margin: 20px;
+}
+
+.container {
+  background-image: url("images/ways-inmates-get-high-768x400.jpg");
+  background-size: cover;
+  width: 90%;
+  height: 50vh;
+  margin: 0 auto;
+  opacity: 0.7;
+  position: relative;
+}
+
+p {
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: block;
+  z-index: 555;
+  font-size: 4em;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wbg {
+  background-color: #555;
+  width: 89%;
+  height: 100%;
+  margin: 0 auto;
+  opacity: 0.7;
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: left;
+  color: black;
+  text-shadow: 2px 2px gray;
+}
+.hrd {
+  border-top: 5px solid black;
+  margin-top: 80px;
+}
+b {
+  color: black;
+  margin-top: 2s0px;
+}
