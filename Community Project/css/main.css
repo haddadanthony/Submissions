@@ -5932,6 +5932,13 @@ body {
   background: #fac4e8;
   overflow-x: hidden;
 }
+@media screen and (min-width: 730px) {
+  body h1,
+  body h2,
+  body h3 {
+    font-size: 1.5em;
+  }
+}
 
 #wrapper {
   width: 92%;
@@ -5939,8 +5946,14 @@ body {
 }
 
 header {
-  height: 50vh;
+  height: 45vh;
   position: relative;
+}
+@media screen and (min-width: 730px) {
+  header {
+    height: 10vh;
+    padding: 5px;
+  }
 }
 header .bg {
   background-image: url("../images/pickup.jpg");
@@ -5950,18 +5963,41 @@ header .bg {
   z-index: -1;
   opacity: 0.2;
 }
+@media screen and (min-width: 730px) {
+  header .bg {
+    display: none;
+  }
+}
 header #hero {
   font-family: "Allura";
   font-size: 2.5em;
   margin-top: 10px;
   color: #fff;
   align-self: flex-start;
+  display: block;
+}
+@media screen and (min-width: 730px) {
+  header #hero {
+    flex: 2 300px;
+    align-self: flex-end;
+    margin: 0;
+    padding: 15px;
+  }
 }
 header nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@media screen and (min-width: 730px) {
+  header nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background: #f8adde;
+    padding: 5px;
+  }
 }
 header #nav-link {
   text-align: center;
@@ -5970,9 +6006,18 @@ header #nav-link {
   display: block;
   width: 100%;
   padding: 5px;
+  transition: 5ms;
+}
+@media screen and (min-width: 730px) {
+  header #nav-link {
+    flex-grow: 1;
+    width: auto;
+    margin: 0;
+  }
 }
 header #nav-link:hover {
-  background: #f8adde;
+  background: #fac4e8;
+  transition: 5ms;
 }
 header #nav-link a {
   text-decoration: none;
@@ -5989,17 +6034,36 @@ header #nav-link a {
 #testimonials {
   margin-top: 50px;
 }
+@media screen and (min-width: 730px) {
+  #testimonials div {
+    display: flex;
+    justify-content: space-around;
+  }
+}
 #testimonials p {
   margin-bottom: 5px;
 }
+@media screen and (min-width: 730px) {
+  #testimonials p {
+    padding: 15px;
+  }
+}
 #testimonials blockquote {
   margin: 50px 0;
+  flex: 1 1;
+  text-align: center;
 }
 #testimonials img {
   margin: 0 20px 5px 0;
   border-radius: 50%;
   border: 3px solid #f8adde;
   box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+}
+@media screen and (min-width: 730px) {
+  #testimonials img {
+    display: inline-block;
+    margin: 0 auto;
+  }
 }
 #testimonials cite {
   font-weight: bold;
@@ -6036,14 +6100,34 @@ footer ul {
   text-align: center;
   padding: 0;
 }
+@media screen and (min-width: 730px) {
+  footer ul {
+    text-align: right;
+    margin-right: 50px;
+  }
+}
 footer #social-link {
   display: inline-block;
 }
 footer #social-link:nth-child(2) {
-  margin: 0 20px;
+  margin: 0 30px;
+}
+@media screen and (min-width: 730px) {
+  footer #social-link:nth-child(2) {
+    margin: 0 100px;
+  }
 }
 footer .fab {
   font-size: 1.7em;
+}
+footer .fab:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+@media screen and (min-width: 730px) {
+  footer .fab {
+    font-size: 2.2em;
+  }
 }
 footer p {
   text-align: center;

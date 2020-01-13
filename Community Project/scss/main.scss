@@ -12,6 +12,13 @@ $secondary: lighten(#c81189, 45%);
 $accent: lighten(#c81189, 40%);
 $margin: 50px;
 
+// Mixins
+@mixin mQ($arg) {
+  @media screen and (min-width: $arg) {
+    @content;
+  }
+}
+
 /*----------------------*/
 /*---HOME PAGE---*/
 /*----------------------*/
@@ -19,6 +26,13 @@ $margin: 50px;
 body {
   background: $secondary;
   overflow-x: hidden;
+  h1,
+  h2,
+  h3 {
+    @include mQ(730px) {
+      font-size: 1.5em;
+    }
+  }
 }
 
 #wrapper {
@@ -27,10 +41,17 @@ body {
 }
 
 header {
-  height: 50vh;
+  @include mQ(730px) {
+    height: 10vh;
+    padding: 5px;
+  }
+  height: 45vh;
   position: relative;
 
   .bg {
+    @include mQ(730px) {
+      display: none;
+    }
     background-image: url("../images/pickup.jpg");
     width: 100%;
     height: 100%;
@@ -45,9 +66,23 @@ header {
     margin-top: 10px;
     color: #fff;
     align-self: flex-start;
+    display: block;
+    @include mQ(730px) {
+      flex: 2 300px;
+      align-self: flex-end;
+      margin: 0;
+      padding: 15px;
+    }
   }
 
   nav {
+    @include mQ(730px) {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      background: $accent;
+      padding: 5px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,14 +90,21 @@ header {
   }
 
   #nav-link {
+    @include mQ(730px) {
+      flex-grow: 1;
+      width: auto;
+      margin: 0;
+    }
     text-align: center;
     font-weight: bold;
     margin-top: 30px;
     display: block;
     width: 100%;
     padding: 5px;
+    transition: 5ms;
     &:hover {
-      background: $accent;
+      background: $secondary;
+      transition: 5ms;
     }
   }
 
@@ -86,13 +128,24 @@ header {
 
 #testimonials {
   margin-top: $margin;
+  @include mQ(730px) {
+    div {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 
   p {
     margin-bottom: 5px;
+    @include mQ(730px) {
+      padding: 15px;
+    }
   }
 
   blockquote {
     margin: $margin 0;
+    flex: 1 1;
+    text-align: center;
   }
 
   img {
@@ -100,6 +153,10 @@ header {
     border-radius: 50%;
     border: 3px solid $accent;
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    @include mQ(730px) {
+      display: inline-block;
+      margin: 0 auto;
+    }
   }
 
   cite {
@@ -138,6 +195,10 @@ footer {
   margin-top: $margin + 20px;
 
   ul {
+    @include mQ(730px) {
+      text-align: right;
+      margin-right: 50px;
+    }
     list-style-type: none;
     text-align: center;
     padding: 0;
@@ -146,12 +207,24 @@ footer {
   #social-link {
     display: inline-block;
     &:nth-child(2) {
-      margin: 0 20px;
+      margin: 0 30px;
+    }
+    @include mQ(730px) {
+      &:nth-child(2) {
+        margin: 0 100px;
+      }
     }
   }
 
   .fab {
     font-size: 1.7em;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+    @include mQ(730px) {
+      font-size: 2.2em;
+    }
   }
 
   p {
