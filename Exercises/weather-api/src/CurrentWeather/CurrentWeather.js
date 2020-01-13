@@ -4,18 +4,18 @@ const CurrentWeather = props => {
   return (
     <section id="main-weather">
       <img src={props.src} alt="clear icon" />
-      <p id="hero">overcast clouds</p>
+      <p id="hero">{props.status}</p>
       <p>
         <strong>Temperature</strong> 10 to 11&#8451;
       </p>
       <div className="info">
         <p>
           <strong>Humidity</strong>
-          <span> 78%</span>
+          <span> {props.humidity}%</span>
         </p>
         <p>
           <strong>Pressure</strong>
-          <span> 1008.48</span>
+          <span> {props.pressure}</span>
         </p>
       </div>
     </section>

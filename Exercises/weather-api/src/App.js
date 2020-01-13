@@ -11,6 +11,7 @@ import storm from "./img/weather-icons/storm.svg";
 import Search from "./Search/Search";
 import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import DetailedWeather from "./DetailedWeather/DetailedWeather";
+import FakeWeather from "./data/FakeWeather.json";
 
 import React, { Component } from "react";
 import "./App.css";
@@ -26,21 +27,54 @@ class App extends Component {
       <div className="app">
         <Search />
         <main className="app__main">
-          <CurrentWeather src={partlyCloudy} />
+          <CurrentWeather
+            status={FakeWeather.list[6].weather[0].description}
+            src={partlyCloudy}
+            humidity={FakeWeather.list[0].main.humidity}
+            pressure={FakeWeather.list[0].main.pressure}
+          />
           <section className="details">
-            <DetailedWeather src={partlyCloudy} time="03:00" temp="8&#8451;" />
+            <DetailedWeather
+              src={partlyCloudy}
+              time="03:00"
+              temp={FakeWeather.list[6].main.temp}
+            />
 
-            <DetailedWeather src={partlyCloudy} time="06:00" temp="9&#8451;" />
+            <DetailedWeather
+              src={partlyCloudy}
+              time="06:00"
+              temp={FakeWeather.list[0].main.temp}
+            />
 
-            <DetailedWeather src={clear} time="09:00" temp="14&#8451;" />
+            <DetailedWeather
+              src={clear}
+              time="09:00"
+              temp={FakeWeather.list[1].main.temp}
+            />
 
-            <DetailedWeather src={clear} time="12:00" temp="17&#8451;" />
+            <DetailedWeather
+              src={clear}
+              time="12:00"
+              temp={FakeWeather.list[2].main.temp}
+            />
 
-            <DetailedWeather src={clear} time="15:00" temp="18&#8451;" />
+            <DetailedWeather
+              src={clear}
+              time="15:00"
+              temp={FakeWeather.list[3].main.temp}
+            />
 
-            <DetailedWeather src={clear} time="18:00" temp="16&#8451;" />
+            <DetailedWeather
+              src={clear}
+              time="18:00"
+              temp={FakeWeather.list[4].main.temp}
+            />
 
-            <DetailedWeather src={partlyCloudy} time="21:00" temp="13&#8451;" />
+            <DetailedWeather
+              src={partlyCloudy}
+              time="21:00"
+              temp={FakeWeather.list[5].main.temp}
+            />
           </section>
         </main>
       </div>
