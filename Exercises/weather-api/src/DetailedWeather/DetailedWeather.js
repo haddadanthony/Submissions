@@ -8,7 +8,7 @@ const DetailedWeather = props => {
         <li>
           <img src={props.src} />
         </li>
-        <li>{props.temp}</li>
+        <li>{props.temp}&#8451;</li>
       </ul>
     </div>
   );

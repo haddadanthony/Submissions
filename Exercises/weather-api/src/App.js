@@ -19,64 +19,106 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.state = {
+      loading: true,
+      weather: null,
+      searchInput: null,
+      minTemp: null
+    };
   }
 
+  handleClick = async () => {
+    console.log(this.state.searchInput);
+    this.setState({ searchInput: "" });
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.searchInput}&cnt=8&units=metric&appid=d336c6f46ac8e4ecf0c7d840d5fa9f5f`
+    );
+    const result = await response.json();
+    this.setState({ weather: result });
+    console.log(this.state.weather);
+  };
+
+  changeHandler = e => {
+    this.setState({ searchInput: e.target.value });
+  };
+
   render() {
+    const loading = (
+      <div className="loading">
+        Loading...<span> Input country name</span>
+      </div>
+    );
+
+    if (this.state.weather) {
+      var main = this.state.weather.list[0].main;
+    }
+
     return (
       <div className="app">
-        <Search />
-        <main className="app__main">
-          <CurrentWeather
-            status={FakeWeather.list[6].weather[0].description}
-            src={partlyCloudy}
-            humidity={FakeWeather.list[0].main.humidity}
-            pressure={FakeWeather.list[0].main.pressure}
-          />
-          <section className="details">
-            <DetailedWeather
+        <Search
+          click={this.handleClick}
+          change={this.changeHandler}
+          value={this.state.searchInput}
+        />
+
+        {!this.state.weather ? (
+          loading
+        ) : (
+          <main className="app__main">
+            <CurrentWeather
+              name={this.state.weather.city.name}
               src={partlyCloudy}
-              time="03:00"
-              temp={FakeWeather.list[6].main.temp}
+              humidity={main.humidity}
+              pressure={main.pressure}
+              min={Math.floor(main.temp_min)}
+              max={Math.floor(this.state.weather.list[4].main.temp)}
             />
+            <section className="details">
+              <DetailedWeather
+                src={partlyCloudy}
+                time="03:00"
+                temp={Math.floor(this.state.weather.list[2].main.temp)}
+              />
 
-            <DetailedWeather
-              src={partlyCloudy}
-              time="06:00"
-              temp={FakeWeather.list[0].main.temp}
-            />
+              <DetailedWeather
+                src={partlyCloudy}
+                time="06:00"
+                temp={Math.floor(this.state.weather.list[3].main.temp)}
+              />
 
-            <DetailedWeather
-              src={clear}
-              time="09:00"
-              temp={FakeWeather.list[1].main.temp}
-            />
+              <DetailedWeather
+                src={clear}
+                time="09:00"
+                temp={Math.floor(this.state.weather.list[4].main.temp)}
+              />
 
-            <DetailedWeather
-              src={clear}
-              time="12:00"
-              temp={FakeWeather.list[2].main.temp}
-            />
+              <DetailedWeather
+                src={clear}
+                time="12:00"
+                temp={Math.floor(this.state.weather.list[5].main.temp)}
+              />
 
-            <DetailedWeather
-              src={clear}
-              time="15:00"
-              temp={FakeWeather.list[3].main.temp}
-            />
+              <DetailedWeather
+                src={clear}
+                time="15:00"
+                temp={Math.floor(this.state.weather.list[6].main.temp)}
+              />
 
-            <DetailedWeather
-              src={clear}
-              time="18:00"
-              temp={FakeWeather.list[4].main.temp}
-            />
+              <DetailedWeather
+                src={clear}
+                time="18:00"
+                temp={Math.floor(this.state.weather.list[7].main.temp)}
+              />
 
-            <DetailedWeather
-              src={partlyCloudy}
-              time="21:00"
-              temp={FakeWeather.list[5].main.temp}
-            />
-          </section>
-        </main>
+              <DetailedWeather
+                src={partlyCloudy}
+                time="21:00"
+                temp={Math.floor(this.state.weather.list[0].main.temp)}
+              />
+            </section>
+          </main>
+        )}
       </div>
     );
   }

@@ -7,8 +7,10 @@ const Search = props => {
         type="text"
         id="input-country"
         placeholder="Input country name..."
+        onChange={props.change}
+        value={props.value}
       />
-      <button>FIND WEATHER</button>
+      <button onClick={props.click}>FIND WEATHER</button>
     </header>
   );
 };

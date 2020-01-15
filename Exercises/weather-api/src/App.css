@@ -100,3 +100,19 @@
     padding: 0;
   }
 }
+
+/* Loading */
+
+.loading {
+  font-weight: bold;
+  display: block;
+  margin: 4em auto;
+  font-size: 2em;
+  width: fit-content;
+}
+
+.loading span {
+  font-size: 0.7em;
+  font-weight: lighter;
+  color: #555;
+}
