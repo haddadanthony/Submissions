@@ -6,7 +6,7 @@ const DetailedWeather = props => {
       <ul>
         <li>{props.time}</li>
         <li>
-          <img src={props.src} />
+          <img src={props.src(props.id)} />
         </li>
         <li>{props.temp}&#8451;</li>
       </ul>

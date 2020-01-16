@@ -97,6 +97,15 @@
 
   .details div {
     margin-bottom: 40px;
+    padding: 30px;
+    background-color: rgb(123, 136, 220);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 5px 7px 4px #555;
+    text-align: center;
+  }
+
+  .details ul {
     padding: 0;
   }
 }
