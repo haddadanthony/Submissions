@@ -46,3 +46,21 @@ where graduates.name = "Layal"
 # 4
 delete from graduates
 where name = "Layal";
+
+# Joins
+
+# 1
+select employees.name, employees.Company, companies.Date
+from employees
+inner join companies on companies.Name = employees.Company
+
+# 2
+select employees.name, employees.Company, companies.Date
+from employees
+inner join companies on companies.Name = employees.Company
+where companies.date < 2000
+
+# 3
+select companies.name from companies
+inner join employees on employees.Company = companies.Name
+where employees.Role = "Graphic Designer"
