@@ -23,6 +23,7 @@
 
 
 # Creating Table
+
 # 1
 create table graduates(
 	id integer not null primary key autoincrement,
@@ -64,3 +65,28 @@ where companies.date < 2000
 select companies.name from companies
 inner join employees on employees.Company = companies.Name
 where employees.Role = "Graphic Designer"
+
+# Count and Filter
+
+# 1
+select name, max(points)
+from students
+
+# 2
+select avg(points)
+from students
+
+# 3
+select count(name)
+from students
+where points = 500
+
+# 4
+select name
+from students
+where name like "%s%"
+
+# 5
+select name, points
+from students
+order by points desc
