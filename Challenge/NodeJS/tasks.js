@@ -36,11 +36,16 @@ function onDataReceived(text) {
     quit();
   } else if (text === "hello\n") {
     hello();
+  } else if (text === "help\n") {
+    help();
   } else {
     unknownCommand(text);
   }
 }
 
+function help() {
+  console.log(`quit or exit: Exits Program\nhello: Prints greeting`);
+}
 /**
  * prints "unknown command"
  * This function is supposed to run when all other commands have failed
