@@ -60,6 +60,11 @@ function help() {
   console.log(
     `Hello: prints "Hello!" if you type hello followed by text it will print "Hello" + "text"!`
   );
+  console.log("List: preview your list");
+  console.log(`Add: adds an element to your list / "add" + "item-to-add"`);
+  console.log(
+    `Remove: removes an item from your list / "remove"-> removes last item / "remove 1" -> remove first item... and so on`
+  );
 }
 /**
  * prints "unknown command"
@@ -117,9 +122,9 @@ function remove(list, text) {
   let num = parseInt(text[1]);
   if (text[0] == "remove\n" && text.length == 1) {
     list.pop();
-  } else if (text[0] == "remove" && list[num] && typeof num == "number") {
-    list.splice(num, 1);
-  } else console.log("Wrong input!");
+  } else if (text[0] == "remove" && list[num - 1] && typeof num == "number") {
+    list.splice(num - 1, 1);
+  } else console.log("Invalid input: Item doesn't exist");
 }
 
 /**
