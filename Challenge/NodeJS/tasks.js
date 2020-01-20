@@ -115,6 +115,7 @@ function add(arr, item) {
     item.shift();
     item = item.join(" ");
     item = item.replace("\n", "");
+    item = `[ ] ${item}`;
     arr.push(item);
   } else console.log("Error: incorrect input!");
 }
@@ -135,11 +136,13 @@ function edit(list, text) {
   if (text[0] == "edit" && text.length > 2 && !isNaN(num)) {
     text.splice(0, 2);
     text = text.join(" ");
+    text = `[ ] ${text}`;
     text = text.replace("\n", "");
     return (list[num - 1] = text);
   } else if (text[0] == "edit" && text.length == 2) {
     text.splice(0, 1);
     text = text.join(" ");
+    text = `[ ] ${text}`;
     text = text.replace("\n", "");
     return (list[list.length - 1] = text);
   } else if (text[0] == "edit" && text.length == 1) {
