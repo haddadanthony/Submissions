@@ -43,7 +43,10 @@ function onDataReceived(text) {
     help();
   } else if (text.includes("add")) {
     add(arr, text);
+  } else if (text.includes("remove")) {
+    remove(arr, text);
   } else if (text === "list\n") {
+    console.log(arr);
     print(arr);
   } else {
     unknownCommand(text);
@@ -88,6 +91,11 @@ function hello(text) {
 
 function print(arr) {
   let i = 0;
+  if (!arr.length) {
+    console.log(`list is empty!`);
+    return;
+  }
+
   do {
     console.log(`${i + 1}. ${arr[i]}`);
     i++;
@@ -101,7 +109,17 @@ function add(arr, item) {
     item = item.join(" ");
     item = item.replace("\n", "");
     arr.push(item);
-  }
+  } else console.log("Error: incorrect input!");
+}
+
+function remove(list, text) {
+  text = text.split(" ");
+  let num = parseInt(text[1]);
+  if (text[0] == "remove\n" && text.length == 1) {
+    list.pop();
+  } else if (text[0] == "remove" && list[num] && typeof num == "number") {
+    list.splice(num, 1);
+  } else console.log("Wrong input!");
 }
 
 /**
