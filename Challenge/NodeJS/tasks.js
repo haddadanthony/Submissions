@@ -46,7 +46,10 @@ function onDataReceived(text) {
 // Outputs to the console all the possible commands and
 // their functionalities
 function help() {
-  console.log(`quit or exit: Exits Program\nhello: Prints greeting`);
+  console.log(`quit or exit: Exits Program`);
+  console.log(
+    `Hello: prints "Hello!" if you type hello followed by text it will print "Hello" + "text"!`
+  );
 }
 /**
  * prints "unknown command"
