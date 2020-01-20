@@ -43,6 +43,8 @@ function onDataReceived(text) {
   }
 }
 
+// Outputs to the console all the possible commands and
+// their functionalities
 function help() {
   console.log(`quit or exit: Exits Program\nhello: Prints greeting`);
 }
