@@ -30,7 +30,10 @@ function startApp(name) {
  *
  * @param  {string} text data typed by the user
  * @returns {void}
+ *
  */
+
+let arr = [];
 function onDataReceived(text) {
   if (text === "quit\n" || text === `exit\n`) {
     quit();
@@ -38,6 +41,10 @@ function onDataReceived(text) {
     hello(text);
   } else if (text === "help\n") {
     help();
+  } else if (text.includes("add")) {
+    add(arr, text);
+  } else if (text === "list\n") {
+    print(arr);
   } else {
     unknownCommand(text);
   }
@@ -76,6 +83,24 @@ function hello(text) {
     console.log(new_text + "!");
   } else if (text == `hello\n`) {
     console.log(`hello!`);
+  }
+}
+
+function print(arr) {
+  let i = 0;
+  do {
+    console.log(`${i + 1}. ${arr[i]}`);
+    i++;
+  } while (i < arr.length);
+}
+
+function add(arr, item) {
+  item = item.split(" ");
+  if (item[0] == "add" && item.length > 1) {
+    item.shift();
+    item = item.join(" ");
+    item = item.replace("\n", "");
+    arr.push(item);
   }
 }
 
