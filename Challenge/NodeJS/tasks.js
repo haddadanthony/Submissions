@@ -34,8 +34,8 @@ function startApp(name) {
 function onDataReceived(text) {
   if (text === "quit\n" || text === `exit\n`) {
     quit();
-  } else if (text === "hello\n") {
-    hello();
+  } else if (text.includes("hello")) {
+    hello(text);
   } else if (text === "help\n") {
     help();
   } else {
@@ -64,8 +64,16 @@ function unknownCommand(c) {
  *
  * @returns {void}
  */
-function hello() {
-  console.log("hello!");
+function hello(text) {
+  text.trim();
+  let new_text = text.split(" ");
+  if (new_text[0] == "hello") {
+    new_text = new_text.join(" ");
+    new_text = new_text.replace("\n", "");
+    console.log(new_text + "!");
+  } else if (text == `hello\n`) {
+    console.log(`hello!`);
+  }
 }
 
 /**
