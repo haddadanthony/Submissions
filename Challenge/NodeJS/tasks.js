@@ -61,7 +61,7 @@ function unknownCommand(c) {
 
 /**
  * Says hello
- *
+ * @param {string} text
  * @returns {void}
  */
 function hello(text) {
