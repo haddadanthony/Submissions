@@ -48,6 +48,8 @@ function onDataReceived(text) {
   } else if (text === "list\n") {
     console.log(arr);
     print(arr);
+  } else if (text.includes("edit")) {
+    edit(arr, text);
   } else {
     unknownCommand(text);
   }
@@ -127,6 +129,23 @@ function remove(list, text) {
   } else console.log("Invalid input: Item doesn't exist");
 }
 
+function edit(list, text) {
+  text = text.split(" ");
+  let num = parseInt(text[1]);
+  if (text[0] == "edit" && text.length > 2 && !isNaN(num)) {
+    text.splice(0, 2);
+    text = text.join(" ");
+    text = text.replace("\n", "");
+    return (list[num - 1] = text);
+  } else if (text[0] == "edit" && text.length == 2) {
+    text.splice(0, 1);
+    text = text.join(" ");
+    text = text.replace("\n", "");
+    return (list[list.length - 1] = text);
+  } else if (text[0] == "edit" && text.length == 1) {
+    console.log("Error: incorrect input!");
+  }
+}
 /**
  * Exits the application
  *
