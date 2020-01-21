@@ -1,3 +1,4 @@
+var fs = require("fs");
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -12,6 +13,7 @@ function startApp(name) {
   process.stdin.resume();
   process.stdin.setEncoding("utf8");
   process.stdin.on("data", onDataReceived);
+  fs.createWriteStream(process.argv[2]);
   console.log(`Welcome to ${name}'s application!`);
   console.log("--------------------");
 }
@@ -46,10 +48,11 @@ function onDataReceived(text) {
   } else if (text.includes("remove")) {
     remove(arr, text);
   } else if (text === "list\n") {
-    console.log(arr);
     print(arr);
   } else if (text.includes("edit")) {
     edit(arr, text);
+  } else if (text.includes("check")) {
+    checkHandler(arr, text);
   } else {
     unknownCommand(text);
   }
@@ -67,6 +70,8 @@ function help() {
   console.log(
     `Remove: removes an item from your list / "remove"-> removes last item / "remove 1" -> remove first item... and so on`
   );
+  console.log(`Check: Checks a todo`);
+  console.log(`Uncheck: unchecks a todo`);
 }
 /**
  * prints "unknown command"
@@ -93,6 +98,24 @@ function hello(text) {
     console.log(new_text + "!");
   } else if (text == `hello\n`) {
     console.log(`hello!`);
+  }
+}
+
+function checkHandler(list, text) {
+  text = text.split(" ");
+  num = parseInt(text[1]);
+  if (text[0] == "check" && text.length > 1) {
+    if (list[num - 1].slice(0, 3) == "[✓]") {
+      console.log("Task already checked");
+    }
+    list[num - 1] = list[num - 1].replace("[ ]", "[✓]");
+  } else if (text[0] == "uncheck" && text.length > 1) {
+    if (list[num - 1].slice(0, 3) == "[ ]") {
+      console.log("Task already unchecked");
+    }
+    list[num - 1] = list[num - 1].replace("[✓]", "[ ]");
+  } else if (text[0] == "check" && text.length == 1) {
+    console.log("Invalid input!");
   }
 }
 
@@ -155,7 +178,9 @@ function edit(list, text) {
  * @returns {void}
  */
 function quit() {
+  console.log(`Saving data to '${process.argv[2]}'`);
   console.log("Quitting now, goodbye!");
+  fs.writeFileSync(process.argv[2], JSON.stringify(arr));
   process.exit();
 }
 
