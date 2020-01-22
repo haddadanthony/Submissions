@@ -15,7 +15,22 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/time", (req, res) => {
+  console.log(res.params);
   res.json({ status: 200, message: getDate() });
+});
+
+app.get("/hello/:id", (req, res) => {
+  let id = req.params.id;
+  res.json({ status: 200, message: `Hello, ${id}` });
+});
+
+app.get("/search/:search?", (req, res) => {
+  let search = req.params.search;
+  if (search) {
+    res.json({ status: 200, message: "ok", data: search });
+  } else {
+    res.json({ status: 500, message: "Search not provided", error: true });
+  }
 });
 
 app.listen(port, () => console.log(`listening to port ${port}`));
