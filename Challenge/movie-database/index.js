@@ -52,8 +52,23 @@ app.get("/movies/add", (req, res) => {
 });
 
 app.get("/movies/get", (req, res) => {
-  ``;
   res.json({ status: 200, data: movies });
+});
+
+app.get("/movies/get/id/:id", (req, res) => {
+  let id = req.params.id;
+  let result = -1;
+  movies.forEach(movie => {
+    if (movie.title == id) {
+      result = movie;
+    }
+  });
+
+  if (result !== -1) {
+    res.json({ status: 200, data: result });
+  } else {
+    res.json({ status: 404, message: `The movie id ${id} does not exist` });
+  }
 });
 
 app.get("/movies/get/by-date", (req, res) => {
