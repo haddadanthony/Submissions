@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-const movies = [
+let movies = [
   { title: "Jaws", year: 1975, rating: 8 },
   { title: "Avatar", year: 2009, rating: 7.8 },
   { title: "Brazil", year: 1985, rating: 8 },
@@ -115,7 +115,17 @@ app.get("/movies/edit", (req, res) => {
 });
 
 app.get("/movies/delete", (req, res) => {
-  res.send("delete");
+  let index = req.query.id - 1;
+  if (movies[index]) {
+    movies.splice(index, 1);
+    res.json({ status: 200, data: movies });
+  } else {
+    res.json({
+      status: 404,
+      error: true,
+      message: "the movie <ID> does not exist"
+    });
+  }
 });
 
 app.listen(port, () => console.log(`listening to port ${port}`));
