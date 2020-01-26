@@ -1,6 +1,17 @@
 const express = require("express");
 const app = express();
+const Movie = require("./DB/Movie");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const route = express.Router();
+const connectDB = require("./DB/Connection");
 const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+connectDB();
+app.use("/api/userModel", require("./Api/Movie"));
+
+app.use(express.json({ extended: false }));
 
 let movies = [
   { title: "Jaws", year: 1975, rating: 8 },
@@ -33,8 +44,6 @@ app.get("/hello/:id", (req, res) => {
 
 app.get("/search", (req, res) => {
   let search = req.query.s;
-  console.log(req.params);
-  console.log(search);
 
   if (search) {
     res.json({ status: 500, message: "ok", data: search });
@@ -47,7 +56,7 @@ app.get("/search", (req, res) => {
   }
 });
 
-app.get("/movies/add", (req, res) => {
+app.post("/movies/add", (req, res) => {
   let new_movie = {
     title: req.query.title,
     year: req.query.year,
@@ -71,7 +80,9 @@ app.get("/movies/add", (req, res) => {
     new_movie.year = parseInt(new_movie.year);
     new_movie.rating = parseInt(new_movie.rating);
     movies.unshift(new_movie);
-    res.json({ status: 200, data: movies });
+    let userModel = new Movie(new_movie);
+    userModel.save();
+    res.json(userModel);
   }
 });
 
@@ -110,11 +121,32 @@ app.get("/movies/get/by-title", (req, res) => {
   res.json({ status: 200, data: SortedByTitle });
 });
 
-app.get("/movies/edit", (req, res) => {
-  res.send("edit");
+app.put("/movies/edit/:id", (req, res) => {
+  let id = req.params.id - 1;
+  let movie = {
+    title: req.query.title,
+    year: req.query.year,
+    rating: req.query.rating
+  };
+
+  Object.keys(movie).forEach((key, index) => {
+    if (movie[key] == undefined) {
+      delete movie[key];
+    }
+    console.log(movie);
+  });
+
+  Object.keys(movie).forEach(el => {
+    movies[id][el] = movie[el];
+  });
+
+  movies[id].year = parseInt(movies[id].year);
+  movies[id].rating = parseInt(movies[id].rating);
+
+  res.json({ message: 202, data: movies });
 });
 
-app.get("/movies/delete", (req, res) => {
+app.delete("/movies/delete", (req, res) => {
   let index = req.query.id - 1;
   if (movies[index]) {
     movies.splice(index, 1);
